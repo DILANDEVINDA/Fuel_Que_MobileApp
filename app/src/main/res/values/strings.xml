@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UI_Design3</string>
+    <string-array name="spinner2">
+        <item>Owner</item>
+        <item>Consumer</item>
+    </string-array>
+</resources>

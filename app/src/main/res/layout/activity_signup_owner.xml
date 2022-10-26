@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#37386e"
+    tools:context=".activity_signup_owner">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/background_purple_1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/back_3" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/logo3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="Owner Details"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                 />
+
+            <EditText
+                android:id="@+id/editTextNameOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@drawable/name"
+                android:drawableLeft="@drawable/name"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextEmailOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@drawable/email"
+                android:drawableLeft="@drawable/email"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextPasswordOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@drawable/password"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextMNumberOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/stat_sys_phone_call_on_hold"
+                android:drawableLeft="@android:drawable/stat_sys_phone_call_on_hold"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Mobile Number"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Fuel Station Details"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextFStationNameOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@drawable/name"
+                android:drawableLeft="@drawable/name"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Filling Station Name"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextSLocationOfOwner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/ic_menu_mylocation"
+                android:drawableLeft="@drawable/btn_2"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Location"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/spinner2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginStart="24dp"-->
+            <!--                android:layout_marginTop="24dp"-->
+            <!--                android:layout_marginEnd="24dp"-->
+            <!--                android:background="@drawable/background_edittext"-->
+            <!--                android:ems="10"-->
+            <!--                android:padding="10dp"-->
+            <!--                android:spinnerMode="dropdown"-->
+            <!--                android:textColorHint="#ffffff" />-->
+
+
+
+            <Button
+                android:id="@+id/btnSignupInOwner"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/background_button"
+                android:text="Signup"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
