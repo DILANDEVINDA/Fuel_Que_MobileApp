@@ -1,6 +1,8 @@
 package com.example.fuel_que_mobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fuel_que_mobileapp.models.user.OwnerAndStationModel;
 import com.example.fuel_que_mobileapp.models.user.UserAPI;
 import com.example.fuel_que_mobileapp.models.user.UserModel;
 
@@ -37,12 +40,12 @@ public class SignUpOwner extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String details = Name.getText().toString() + " " + Email.getText().toString() + " " + Password.getText().toString()+ " " + MNumber.getText().toString()+ " " + SName.getText().toString()+ " " + Location.getText().toString();
+                String[] message = {""};
                 UserModel user = new UserModel(Name.getText().toString(),Email.getText().toString(),Password.getText().toString(),MNumber.getText().toString(),"Owner");
+                OwnerAndStationModel oandS = new OwnerAndStationModel(user,SName.getText().toString(),Location.getText().toString(),1000,2000,3000,4000);
 
-                Log.d("Typed words = " , details);
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.8.102:45455/")
+                        .baseUrl("http://192.168.1.6:45455/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
@@ -50,12 +53,16 @@ public class SignUpOwner extends AppCompatActivity {
                 Call<Void> call = api.createUser(user);
 
                 call.enqueue(new Callback<Void>() {
+                    boolean result = false;
+
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Log.d("response code ",String.valueOf(response.code() == 200));
-                        if( 200 == response.code()){
-                            Log.d("condition woeking", "");
-                            Toast.makeText(SignUpOwner.this,"User created successfully !", Toast.LENGTH_LONG);
+                        if(response.code() == 200){
+                            message[0] = "";
+                        }else{
+                            message[0] = "User Creation Unsuccessfully !";
+                            Log.d("response code ",String.valueOf(false));
+
                         }
                     }
 
@@ -63,7 +70,15 @@ public class SignUpOwner extends AppCompatActivity {
                     public void onFailure(Call<Void> call, Throwable t) {
 
                     }
+
                 });
+
+
+                Toast.makeText(SignUpOwner.this,message[0], Toast.LENGTH_LONG);
+
+                Intent i = new Intent(SignUpOwner.this, Login.class);
+                startActivity(i);
+                finish();
 
             }
         });
