@@ -5,11 +5,9 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
-public class activity_intro extends AppCompatActivity {
+public class HomeScreenOwner extends AppCompatActivity {
 
     private Button octane92;
     private Button octane95;
@@ -19,7 +17,7 @@ public class activity_intro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
+        setContentView(R.layout.activity_homescreen_owner);
 
         octane92 = findViewById(R.id.btnOwnerFuel92);
         octane95 = findViewById(R.id.btnOwnerFuel95);

@@ -17,7 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class activity_signup_owner extends AppCompatActivity {
+public class SignUpOwner extends AppCompatActivity {
 
     EditText Name,Email,Password,MNumber,SName,Location;
 
@@ -53,9 +53,9 @@ public class activity_signup_owner extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Log.d("response code ",String.valueOf(response.code() == 200));
-                        if( 2000 != response.code()){
+                        if( 200 == response.code()){
                             Log.d("condition woeking", "");
-                            Toast.makeText(activity_signup_owner.this,"User created successfully !", Toast.LENGTH_LONG);
+                            Toast.makeText(SignUpOwner.this,"User created successfully !", Toast.LENGTH_LONG);
                         }
                     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#37386e"
-    tools:context=".activity_login">
+    tools:context=".Login">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -103,7 +103,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textVewRegisterFromLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -119,20 +119,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/background_button"
             android:text="Login"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Forget Password? Reset?"
-            android:textAlignment="center"
-            android:textColor="#ffffff" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

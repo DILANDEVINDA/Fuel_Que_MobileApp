@@ -9,14 +9,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
-public class location_search extends AppCompatActivity {
+public class HomeScreenConsumer extends AppCompatActivity {
 
     private EditText searchField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_search);
+        setContentView(R.layout.activity_homescreen_consumer);
 
         searchField = findViewById(R.id.editTextSearchINConsumer);
 

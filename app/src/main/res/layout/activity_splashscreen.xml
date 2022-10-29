@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#37386E"
-    tools:context=".MainActivity" >
+    tools:context=".SplashScreen" >
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,7 +27,7 @@
         app:srcCompat="@drawable/logo4" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewSpashScreenGoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +60,7 @@
         android:textColor="#ffffff"
         android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewSpashScreenGoBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent" />
