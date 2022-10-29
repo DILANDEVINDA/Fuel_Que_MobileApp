@@ -10,6 +10,6 @@ public interface UserAPI {
     @GET()
     Call<UserModel> getSpecificUser();
 
-    @POST("backend/User")
+    @POST("backend/User/createOwnerAndStation")
     Call<Void> createUser(@Body UserModel user);
 }
