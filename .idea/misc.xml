@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/drawable/circle.xml" value="0.2595" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_into1.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_intro.xml" value="0.264" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_location_search.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_sample_testing.xml" value="0.25416666666666665" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup_owner.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel92_ocatane.xml" value="0.2" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel95_ocatane.xml" value="0.25416666666666665" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel_autodiesel.xml" value="0.25416666666666665" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel_super_diesel.xml" value="0.25416666666666665" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/popupfor92.xml" value="0.4" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
