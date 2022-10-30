@@ -3,7 +3,9 @@ package com.example.fuel_que_mobileapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,15 @@ public class Login extends AppCompatActivity {
     RadioButton consumer,owner;
     Button btnContinue,btnLogin;
     EditText email,password;
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    public static final String NAME_KEY = "name_key";
+    public static final String USER_ID = "user_id";
+    public static final String USER_TYPE = "user_type";
+
+    String emailStr,passwordStr,userTypeStr;
+    SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,11 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         email = findViewById(R.id.editTextLoginEmail);
         password = findViewById(R.id.editTextLoginPassword);
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        emailStr = sharedpreferences.getString("email_key", null);
+        passwordStr = sharedpreferences.getString("password_key", null);
+        userTypeStr = sharedpreferences.getString("user_type", null);
 
         //Separate the user from resgistration
         //Owner has more fields fill in the registration form
@@ -96,9 +112,22 @@ public class Login extends AppCompatActivity {
                             Log.d("response","working");
 
                             if(response.body().getUsertype().equals("Owner")){
-                                Intent i = new Intent(Login.this, HomeScreenOwner.class);
-                                startActivity(i);
-                                finish();
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                                editor.putString(EMAIL_KEY, response.body().getEmail());
+                                editor.putString(NAME_KEY, response.body().getName());
+                                editor.putString(USER_ID, response.body().getId());
+                                editor.putString(USER_TYPE, response.body().getUsertype());
+
+                                // to save our data with key and value.
+                                boolean result = editor.commit();
+
+                                // starting new activity.
+                                if(result){
+                                    Intent i = new Intent(Login.this, HomeScreenOwner.class);
+                                    startActivity(i);
+                                    finish();
+                                }
                             }else if(response.body().getUsertype().equals("Consumer")){
                                 Intent i = new Intent(Login.this, HomeScreenConsumer.class);
                                 startActivity(i);
@@ -122,5 +151,20 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (email != null && password != null) {
+            Intent i;
+            if(userTypeStr.equals("Owner")){
+                i = new Intent(Login.this, HomeScreenOwner.class);
+            }else{
+                i = new Intent(Login.this, HomeScreenConsumer.class);
+            }
+            startActivity(i);
+
+        }
     }
 }
