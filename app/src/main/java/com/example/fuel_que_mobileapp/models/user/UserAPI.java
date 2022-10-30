@@ -12,4 +12,7 @@ public interface UserAPI {
 
     @POST("backend/User/createOwnerAndStation")
     Call<Void> createUser(@Body OwnerAndStationModel oands);
+
+    @POST("backend/User/userAuthentication")
+    Call<UserModel> authenticateUser(@Body LoginCredentialsModel user);
 }

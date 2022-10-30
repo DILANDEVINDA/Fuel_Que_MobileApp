@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.fuel_que_mobileapp.models.user.OwnerAndStationModel;
 import com.example.fuel_que_mobileapp.models.user.UserAPI;
@@ -31,7 +30,7 @@ public class SignUpOwner extends AppCompatActivity {
 
         Name = findViewById(R.id.editTextNameOfOwner);
         Email = findViewById(R.id.editTextEmailOfOwner);
-        Password = findViewById(R.id.editTextPasswordOfOwner);
+        Password = findViewById(R.id.editTextLoginPassword);
         MNumber = findViewById(R.id.editTextMNumberOfOwner);
         SName = findViewById(R.id.editTextFStationNameOfOwner);
         Location = findViewById(R.id.editTextSLocationOfOwner);
