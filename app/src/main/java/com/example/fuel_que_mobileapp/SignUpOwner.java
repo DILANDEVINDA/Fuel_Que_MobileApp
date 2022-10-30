@@ -40,9 +40,8 @@ public class SignUpOwner extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] message = {""};
                 UserModel user = new UserModel(Name.getText().toString(),Email.getText().toString(),Password.getText().toString(),MNumber.getText().toString(),"Owner");
-                OwnerAndStationModel oandS = new OwnerAndStationModel(user,SName.getText().toString(),Location.getText().toString(),1000,2000,3000,4000);
+                OwnerAndStationModel oandS = new OwnerAndStationModel(user,SName.getText().toString(),Location.getText().toString(),2000,3000,1000,6000);
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://192.168.1.6:45455/")
@@ -50,36 +49,32 @@ public class SignUpOwner extends AppCompatActivity {
                         .build();
 
                 UserAPI api = retrofit.create(UserAPI.class);
-                Call<Void> call = api.createUser(user);
+                Call<Void> call = api.createUser(oandS);
 
                 call.enqueue(new Callback<Void>() {
-                    boolean result = false;
 
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.code() == 200){
-                            message[0] = "";
+                            Log.d("response","working");
+                            Intent i = new Intent(SignUpOwner.this, Login.class);
+                            startActivity(i);
+                            finish();
                         }else{
-                            message[0] = "User Creation Unsuccessfully !";
-                            Log.d("response code ",String.valueOf(false));
+                            Log.d("response","not working");
+                            Intent i = new Intent(SignUpOwner.this, Login.class);
+                            startActivity(i);
+                            finish();
 
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
+                        Log.d("API failed : ",t.getMessage().toString());
                     }
 
                 });
-
-
-                Toast.makeText(SignUpOwner.this,message[0], Toast.LENGTH_LONG);
-
-                Intent i = new Intent(SignUpOwner.this, Login.class);
-                startActivity(i);
-                finish();
-
             }
         });
     }

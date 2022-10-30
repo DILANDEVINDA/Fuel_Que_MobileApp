@@ -11,5 +11,5 @@ public interface UserAPI {
     Call<UserModel> getSpecificUser();
 
     @POST("backend/User/createOwnerAndStation")
-    Call<Void> createUser(@Body UserModel user);
+    Call<Void> createUser(@Body OwnerAndStationModel oands);
 }

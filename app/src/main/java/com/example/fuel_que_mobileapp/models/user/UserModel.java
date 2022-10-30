@@ -17,4 +17,27 @@ public class UserModel {
         this.usertype = usertype;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getMobilenumber() {
+        return mobilenumber;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
 }
