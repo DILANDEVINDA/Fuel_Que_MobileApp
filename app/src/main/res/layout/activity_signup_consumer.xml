@@ -72,7 +72,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/editTextEmailOfOwner"
+                android:id="@+id/editTextEmailOfConsumer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
@@ -89,7 +89,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/editTextLoginPassword"
+                android:id="@+id/editTextLoginPasswordOfConsumer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
@@ -106,7 +106,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/editTextMNumberOfOwner"
+                android:id="@+id/editTextMNumberOfConsumer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
@@ -136,7 +136,7 @@
             <!--                android:textColorHint="#ffffff" />-->
 
             <Button
-                android:id="@+id/btnSignupInOwner"
+                android:id="@+id/btnSignUPForConsumer"
                 style="@android:style/Widget.Button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

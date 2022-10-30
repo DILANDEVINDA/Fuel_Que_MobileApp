@@ -6,15 +6,15 @@ public class UserModel {
     private String name;
     private String email;
     private String password;
-    private String mobilenumber;
-    private String usertype;
+    private String mobileNumber;
+    private String userType;
 
     public UserModel(String name, String email, String password, String mobilenumber, String usertype) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.mobilenumber = mobilenumber;
-        this.usertype = usertype;
+        this.mobileNumber = mobilenumber;
+        this.userType = usertype;
     }
 
     public String getId() {
@@ -34,10 +34,10 @@ public class UserModel {
     }
 
     public String getMobilenumber() {
-        return mobilenumber;
+        return mobileNumber;
     }
 
     public String getUsertype() {
-        return usertype;
+        return userType;
     }
 }

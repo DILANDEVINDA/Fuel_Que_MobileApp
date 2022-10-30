@@ -79,6 +79,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 LoginCredentialsModel loginCredentials = new LoginCredentialsModel(email.getText().toString(),password.getText().toString());
 
+                //Api Caller
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://192.168.1.6:45455/")
                         .addConverterFactory(GsonConverterFactory.create())
@@ -87,16 +88,22 @@ public class Login extends AppCompatActivity {
                 UserAPI api = retrofit.create(UserAPI.class);
                 Call<UserModel> call = api.authenticateUser(loginCredentials);
 
+                //Invoking th API
                 call.enqueue(new Callback<UserModel>() {
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                         if(response.code() == 200){
                             Log.d("response","working");
 
-                            Log.d("Email from database",response.body().getEmail());
-                            /*Intent i = new Intent(SignUpOwner.this, Login.class);
-                            startActivity(i);
-                            finish();*/
+                            if(response.body().getUsertype().equals("Owner")){
+                                Intent i = new Intent(Login.this, HomeScreenOwner.class);
+                                startActivity(i);
+                                finish();
+                            }else if(response.body().getUsertype().equals("Consumer")){
+                                Intent i = new Intent(Login.this, HomeScreenConsumer.class);
+                                startActivity(i);
+                                finish();
+                            }
                         }else{
                             Toast.makeText(Login.this,"User Not Available",Toast.LENGTH_LONG);
                             /*Intent i = new Intent(SignUpOwner.this, Login.class);

@@ -34,7 +34,7 @@ public class SignUpOwner extends AppCompatActivity {
         MNumber = findViewById(R.id.editTextMNumberOfOwner);
         SName = findViewById(R.id.editTextFStationNameOfOwner);
         Location = findViewById(R.id.editTextSLocationOfOwner);
-        Button signup = findViewById(R.id.btnSignupInOwner);
+        Button signup = findViewById(R.id.btnSignUPForOwner);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class SignUpOwner extends AppCompatActivity {
                         .build();
 
                 UserAPI api = retrofit.create(UserAPI.class);
-                Call<Void> call = api.createUser(oandS);
+                Call<Void> call = api.createOwner(oandS);
 
                 call.enqueue(new Callback<Void>() {
 
