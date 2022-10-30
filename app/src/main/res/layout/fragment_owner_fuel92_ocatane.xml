@@ -167,11 +167,11 @@
                         android:layout_height="match_parent">
 
                         <ProgressBar
-                            android:id="@+id/progress_bar"
+                            android:id="@+id/progress_bar92"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:indeterminateOnly="false"
-                            android:progress="70"
+                            android:progress="60"
                             android:progressDrawable="@drawable/circle"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +181,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
-                            android:id="@+id/textView16"
+                            android:id="@+id/progressBar_textView92"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="60%"
@@ -191,7 +191,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.252"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/progress_bar92"
                             app:layout_constraintVertical_bias="0.502" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
