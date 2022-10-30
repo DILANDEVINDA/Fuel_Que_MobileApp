@@ -10,13 +10,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class HomeScreenOwner extends AppCompatActivity {
 
     private Button octane92,octane95,autodiesel, superdiesel;
     private ImageButton logOut;
     public static final String SHARED_PREFS = "shared_prefs";
-    String email;
+    public TextView Nametxtview,Emaitxtview;
+
+    String emailStr,nameStr;
     SharedPreferences sharedpreferences;
 
     @Override
@@ -29,9 +32,15 @@ public class HomeScreenOwner extends AppCompatActivity {
         autodiesel = findViewById(R.id.btnOwnerFuelAutoDiesel);
         superdiesel = findViewById(R.id.btnOwnerFuelSuperDiesel);
         logOut = findViewById(R.id.imageButtonLogoutinOwnerHomescreen);
+        Nametxtview = findViewById(R.id.textView4);
+        Emaitxtview = findViewById(R.id.textView5);
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        email = sharedpreferences.getString("email_key", null);
+        emailStr = sharedpreferences.getString("email_key", null);
+        nameStr = sharedpreferences.getString("name_key", null);
+
+        Nametxtview.setText(nameStr);
+        Emaitxtview.setText(emailStr);
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override

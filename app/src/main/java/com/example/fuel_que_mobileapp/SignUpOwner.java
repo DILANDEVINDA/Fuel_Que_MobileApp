@@ -48,7 +48,8 @@ public class SignUpOwner extends AppCompatActivity {
                         .build();
 
                 UserAPI api = retrofit.create(UserAPI.class);
-                Call<Void> call = api.createOwner(oandS);
+                Call<Void> call = api.createOwner(
+                        oandS);
 
                 call.enqueue(new Callback<Void>() {
 

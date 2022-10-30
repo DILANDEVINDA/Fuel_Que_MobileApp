@@ -37,9 +37,8 @@ public class Login extends AppCompatActivity {
     public static final String USER_ID = "user_id";
     public static final String USER_TYPE = "user_type";
 
-    String emailStr,passwordStr,userTypeStr;
+    String emailStr,userTypeStr;
     SharedPreferences sharedpreferences;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,6 @@ public class Login extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         emailStr = sharedpreferences.getString("email_key", null);
-        passwordStr = sharedpreferences.getString("password_key", null);
         userTypeStr = sharedpreferences.getString("user_type", null);
 
         //Separate the user from resgistration
@@ -156,15 +154,15 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (email != null && password != null) {
-            Intent i;
-            if(userTypeStr.equals("Owner")){
-                i = new Intent(Login.this, HomeScreenOwner.class);
-            }else{
-                i = new Intent(Login.this, HomeScreenConsumer.class);
+        if (emailStr != null ) {
+            //Log.d("session values :" , emailStr + " " + passwordStr + " " + userTypeStr);
+            if(userTypeStr != null && userTypeStr.equals("Owner")){
+                Intent i = new Intent(Login.this, HomeScreenOwner.class);
+                startActivity(i);
+            }else if(userTypeStr != null && userTypeStr.equals("Consumer")){
+                Intent i = new Intent(Login.this, HomeScreenConsumer.class);
+                startActivity(i);
             }
-            startActivity(i);
-
         }
     }
 }
