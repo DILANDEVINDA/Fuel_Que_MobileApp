@@ -103,7 +103,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/editTextPasswordOfOwner"
+                android:id="@+id/editTextLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"

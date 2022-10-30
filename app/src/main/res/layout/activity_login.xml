@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="24dp"
@@ -63,7 +63,7 @@
             android:textColorHint="#ffffff" />
 
         <EditText
-            android:id="@+id/editTextPasswordOfOwner"
+            android:id="@+id/editTextLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="24dp"
