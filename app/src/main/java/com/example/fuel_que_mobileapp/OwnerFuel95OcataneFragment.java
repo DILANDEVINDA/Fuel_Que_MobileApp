@@ -55,10 +55,10 @@ public class OwnerFuel95OcataneFragment extends Fragment {
         TextView txtprogresstxtView = rootView.findViewById(R.id.progressBar_textView95);
         progressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar95);
 
-        txtfuelFinishTime.setText(fuelArrivalTime);
+        txtfuelFinishTime.setText(fuelFinishTime);
         txtfuelArrivalDate.setText(fuelArrivalDate);
         txtCarryingAmount.setText(carryingFuel);
-        txtfuelArrivalTime.setText(fuelFinishTime);
+        txtfuelArrivalTime.setText(fuelArrivalTime);
 
         double remainingfuelConvert = (remainingFuel/10000.00) * 100.00;
         Log.d("converted value ", String.valueOf(remainingfuelConvert));
@@ -77,6 +77,11 @@ public class OwnerFuel95OcataneFragment extends Fragment {
                 fuelArrivalDatePopUP = (EditText) update92PopView.findViewById(R.id.editTextTextPopUpFuelArrivalDate);
                 fueslArrivalTimePopUP = (EditText) update92PopView.findViewById(R.id.editTextTextPopUpFuelArrivalTime);
                 carryinhLitresPopUP = (EditText) update92PopView.findViewById(R.id.editTextTextPopUpFuelAmount);
+
+                fuelFinihingtimePopUP.setText(fuelFinishTime);
+                fuelArrivalDatePopUP.setText(fuelArrivalDate);
+                fueslArrivalTimePopUP.setText(fuelArrivalTime);
+                carryinhLitresPopUP.setText(carryingFuel);
 
                 cancel = (Button) update92PopView.findViewById(R.id.btnPopUpCancel);
                 save = (Button) update92PopView.findViewById(R.id.btnPopUpSave);

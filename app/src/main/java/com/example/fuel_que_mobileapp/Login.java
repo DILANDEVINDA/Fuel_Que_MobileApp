@@ -127,7 +127,7 @@ public class Login extends AppCompatActivity {
                 String passwordStrAfterClickingLogin = password.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (emailStrAfterClickingLogin.isEmpty() && passwordStrAfterClickingLogin.isEmpty()) {
+                if (emailStrAfterClickingLogin.isEmpty() || passwordStrAfterClickingLogin.isEmpty()) {
                     Toast.makeText(Login.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
                     return;
                 }else{

@@ -68,7 +68,10 @@ public class HomeScreenOwner extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 retievingDataFromBackend(userId);
+
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -98,9 +101,9 @@ public class HomeScreenOwner extends AppCompatActivity {
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getFuelNinetytwo());
                 b.putString("CarryingFuel", "6000");
-                b.putString("FuelFinishTime", "7:00 pm");
+                b.putString("FuelFinishTime", fuelStationDetails.getFuelNinetytwoFinishing());
                 b.putString("FuelArrivalDate", "2022/10/14");
-                b.putString("FuelArrivalTime", "9:00 pm");
+                b.putString("FuelArrivalTime", fuelStationDetails.getFuelNinetytwoArrival());
 
                 ocatane92Fragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -119,9 +122,9 @@ public class HomeScreenOwner extends AppCompatActivity {
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getFuelNinetyFive());
                 b.putString("CarryingFuel", "13000");
-                b.putString("FuelFinishTime", "7:00 pm");
+                b.putString("FuelFinishTime", fuelStationDetails.getFuelNinetyFiveFinishing());
                 b.putString("FuelArrivalDate", "2022/10/15");
-                b.putString("FuelArrivalTime", "10:00 pm");
+                b.putString("FuelArrivalTime",fuelStationDetails.getFuelNinetyFiveArrival());
 
                 octane95Fragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -141,9 +144,9 @@ public class HomeScreenOwner extends AppCompatActivity {
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getAutoDiesel());
                 b.putString("CarryingFuel", "8000");
-                b.putString("FuelFinishTime", "7:00 pm");
+                b.putString("FuelFinishTime",fuelStationDetails.getAutoDieselFinishing());
                 b.putString("FuelArrivalDate", "2022/10/16");
-                b.putString("FuelArrivalTime", "11:00 pm");
+                b.putString("FuelArrivalTime", fuelStationDetails.getAutoDieselArrival());
 
                 autodieselFragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -163,9 +166,9 @@ public class HomeScreenOwner extends AppCompatActivity {
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getSuperDiesel());
                 b.putString("CarryingFuel", "10000");
-                b.putString("FuelFinishTime", "7:00 pm");
+                b.putString("FuelFinishTime", fuelStationDetails.getSuperDieselFinising());
                 b.putString("FuelArrivalDate", "2022/10/10");
-                b.putString("FuelArrivalTime", "2:00 pm");
+                b.putString("FuelArrivalTime", fuelStationDetails.getSuperDieselArrival());
 
                 superDieselFragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
