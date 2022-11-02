@@ -184,7 +184,73 @@
                 android:padding="10dp"
                 android:textColorHint="#ffffff" />
 
+            <EditText
+                android:id="@+id/editTextRemainingFuel92"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/ic_input_get"
+                android:drawableLeft="@android:drawable/ic_input_get"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Remaining Fuel 92"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
 
+            <EditText
+                android:id="@+id/editTextRemainingFuel95"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/ic_input_get"
+                android:drawableLeft="@android:drawable/ic_input_get"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Remaining Fuel 95"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextRemainingFuelAutoDiesel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/ic_input_get"
+                android:drawableLeft="@android:drawable/ic_input_get"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Remaining Fuel AutoDiesel"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
+
+            <EditText
+                android:id="@+id/editTextRemainingFuelSuperDiesel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/background_edittext"
+                android:drawableStart="@android:drawable/ic_input_get"
+                android:drawableLeft="@android:drawable/ic_input_get"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Remaining Fuel SuperDiesel"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="#ffffff" />
 
             <!--            <Spinner-->
             <!--                android:id="@+id/spinner2"-->

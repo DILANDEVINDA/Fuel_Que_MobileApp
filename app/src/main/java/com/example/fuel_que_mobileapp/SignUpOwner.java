@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignUpOwner extends AppCompatActivity {
 
-    EditText Name,Email,Password,MNumber,SName,Location;
+    EditText Name,Email,Password,MNumber,SName,Location,Remaining92,Remaining95,RemainingAutoDiesel,RemainingSuperDiesel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,17 @@ public class SignUpOwner extends AppCompatActivity {
         MNumber = findViewById(R.id.editTextMNumberOfOwner);
         SName = findViewById(R.id.editTextFStationNameOfOwner);
         Location = findViewById(R.id.editTextSLocationOfOwner);
+        Remaining92 = findViewById(R.id.editTextRemainingFuel92);
+        Remaining95 = findViewById(R.id.editTextRemainingFuel95);
+        RemainingAutoDiesel = findViewById(R.id.editTextRemainingFuelAutoDiesel);
+        RemainingSuperDiesel = findViewById(R.id.editTextRemainingFuelSuperDiesel);
         Button signup = findViewById(R.id.btnSignUPForOwner);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserModel user = new UserModel(Name.getText().toString(),Email.getText().toString(),Password.getText().toString(),MNumber.getText().toString(),"Owner");
-                OwnerAndStationModel oandS = new OwnerAndStationModel(user,SName.getText().toString(),Location.getText().toString(),2000,3000,1000,6000);
+                OwnerAndStationModel oandS = new OwnerAndStationModel(user,SName.getText().toString(),Location.getText().toString(),Integer.getInteger(Remaining92.getText().toString()),Integer.getInteger(Remaining95.getText().toString()),Integer.getInteger(RemainingAutoDiesel.getText().toString()),Integer.getInteger(RemainingSuperDiesel.getText().toString()));
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://192.168.1.6:45455/")

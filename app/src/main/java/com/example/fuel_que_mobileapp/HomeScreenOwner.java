@@ -104,6 +104,7 @@ public class HomeScreenOwner extends AppCompatActivity {
                 b.putString("FuelFinishTime", fuelStationDetails.getFuelNinetytwoFinishing());
                 b.putString("FuelArrivalDate", "2022/10/14");
                 b.putString("FuelArrivalTime", fuelStationDetails.getFuelNinetytwoArrival());
+                b.putString("UserId",userId);
 
                 ocatane92Fragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);

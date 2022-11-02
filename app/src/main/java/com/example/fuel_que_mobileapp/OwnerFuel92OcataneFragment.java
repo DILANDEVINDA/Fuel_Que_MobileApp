@@ -1,6 +1,8 @@
 package com.example.fuel_que_mobileapp;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.fuel_que_mobileapp.models.user.FuelStationAPI;
+import com.example.fuel_que_mobileapp.models.user.FuelTypeModel;
+import com.example.fuel_que_mobileapp.models.user.LoginCredentialsModel;
+import com.example.fuel_que_mobileapp.models.user.UserAPI;
+import com.example.fuel_que_mobileapp.models.user.UserModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OwnerFuel92OcataneFragment extends Fragment {
 
@@ -21,7 +36,7 @@ public class OwnerFuel92OcataneFragment extends Fragment {
     private EditText fuelFinihingtimePopUP,fueslArrivalTimePopUP,fuelArrivalDatePopUP,carryinhLitresPopUP;
     private Button cancel,update,save;
     private ProgressBar progressBar;
-    private String carryingFuel,fuelFinishTime,fuelArrivalDate,fuelArrivalTime;
+    private String carryingFuel,fuelFinishTime,fuelArrivalDate,fuelArrivalTime,userID;
     private int remainingFuel;
 
     public OwnerFuel92OcataneFragment(){
@@ -38,6 +53,8 @@ public class OwnerFuel92OcataneFragment extends Fragment {
             remainingFuel = getArguments().getInt("RemainingFuel");
             carryingFuel = getArguments().getString("CarryingFuel");
             fuelArrivalTime = getArguments().getString("FuelArrivalTime");
+            userID = getArguments().getString("UserId");
+
         }
     }
 
@@ -101,12 +118,39 @@ public class OwnerFuel92OcataneFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        txtfuelFinishTime.setText(fuelFinihingtimePopUP.getText().toString());
-                        txtfuelArrivalDate.setText(fuelArrivalDatePopUP.getText().toString());
-                        txtCarryingAmount.setText(fueslArrivalTimePopUP.getText().toString());
-                        txtfuelArrivalTime.setText(carryinhLitresPopUP.getText().toString());
+                        //updating using api
 
-                        dialog.dismiss();
+                        FuelTypeModel updateInfo = new FuelTypeModel("Fuel92",userID,fuelArrivalDatePopUP.getText().toString(),fuelFinihingtimePopUP.getText().toString(),fueslArrivalTimePopUP.getText().toString(),Integer.getInteger(carryinhLitresPopUP.getText().toString()));
+
+                        //Api Caller
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://192.168.1.6:45455/")
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        FuelStationAPI api = retrofit.create(FuelStationAPI.class);
+                        Call<Void> call = api.updateSpecificFuelStation(userID,updateInfo);
+
+                        //Invoking th API
+                        call.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.code() == 200){
+                                    txtfuelFinishTime.setText(fuelFinihingtimePopUP.getText().toString());
+                                    txtfuelArrivalDate.setText(fuelArrivalDatePopUP.getText().toString());
+                                    txtCarryingAmount.setText(fueslArrivalTimePopUP.getText().toString());
+                                    txtfuelArrivalTime.setText(carryinhLitresPopUP.getText().toString());
+
+                                    dialog.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                        //end of api calling
                     }
                 });
             }

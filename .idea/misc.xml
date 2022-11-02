@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/drawable/circle.xml" value="0.2595" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/drawable/registration_gas_icon_foreground.xml" value="0.2595" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_homescreen_consumer.xml" value="0.25416666666666665" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_homescreen_owner.xml" value="0.11929824561403508" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_into1.xml" value="0.22826086956521738" />
@@ -14,7 +15,7 @@
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_sample_testing.xml" value="0.25416666666666665" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.22826086956521738" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup_consumer.xml" value="0.25416666666666665" />
-        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup_owner.xml" value="0.22826086956521738" />
+        <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/activity_signup_owner.xml" value="0.18994413407821228" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel92_ocatane.xml" value="0.2" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel95_ocatane.xml" value="0.25416666666666665" />
         <entry key="..\:/EAD assignment/Fuel_Que_MobileApp/app/src/main/res/layout/fragment_owner_fuel_autodiesel.xml" value="0.25416666666666665" />
