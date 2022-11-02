@@ -3,6 +3,7 @@ package com.example.fuel_que_mobileapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +34,7 @@ public class HomeScreenOwner extends AppCompatActivity {
     private static final String SHARED_PREFS = "shared_prefs";
     private TextView Nametxtview,Emaitxtview;
     private FuelStationModel fuelStationDetails;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private String emailStr,nameStr,userId;
     private SharedPreferences sharedpreferences;
 
@@ -40,6 +42,8 @@ public class HomeScreenOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen_owner);
+
+        swipeRefreshLayout = findViewById(R.id.refreshLayoutOwner);
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         emailStr = sharedpreferences.getString("email_key", null);
@@ -60,6 +64,13 @@ public class HomeScreenOwner extends AppCompatActivity {
         //retrieving data from backend
         Log.d("Id of User ",userId);
         retievingDataFromBackend(userId);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                retievingDataFromBackend(userId);
+            }
+        });
 
         //Logout method
         //this will remove the session

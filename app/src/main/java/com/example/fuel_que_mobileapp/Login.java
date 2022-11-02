@@ -16,8 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fuel_que_mobileapp.models.user.LoginCredentialsModel;
+import com.example.fuel_que_mobileapp.models.user.SqliteDbHelper;
 import com.example.fuel_que_mobileapp.models.user.UserAPI;
 import com.example.fuel_que_mobileapp.models.user.UserModel;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,17 +31,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Login extends AppCompatActivity {
     private AlertDialog.Builder dialogbuilder;
     private AlertDialog dialog;
-    RadioButton consumer,owner;
-    Button btnContinue,btnLogin;
-    EditText email,password;
-    public static final String SHARED_PREFS = "shared_prefs";
-    public static final String EMAIL_KEY = "email_key";
-    public static final String NAME_KEY = "name_key";
-    public static final String USER_ID = "user_id";
-    public static final String USER_TYPE = "user_type";
+    private RadioButton consumer,owner;
+    private Button btnContinue,btnLogin;
+    private EditText email,password;
+    private static final String SHARED_PREFS = "shared_prefs";
+    private static final String EMAIL_KEY = "email_key";
+    private static final String NAME_KEY = "name_key";
+    private static final String USER_ID = "user_id";
+    private static final String USER_TYPE = "user_type";
 
-    String emailStr,userTypeStr;
-    SharedPreferences sharedpreferences;
+    //session management
+    private String emailStr,userTypeStr,startingEmailValue;
+    private SharedPreferences sharedpreferences;
+
+    //sqlite variables
+    private SqliteDbHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,29 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         email = findViewById(R.id.editTextLoginEmail);
         password = findViewById(R.id.editTextLoginPassword);
+
+        //sqlite db part of the login. this will keep login credentials
+        // creating a new dbhandler class
+        // and passing our context to it.
+        startingEmailValue = email.getText().toString();
+        db = new SqliteDbHelper(Login.this);
+        boolean result = db.tableExists();
+        if(result){
+            ArrayList<LoginCredentialsModel> users = new ArrayList<>();
+            users = db.readUser();
+            String userEmail = "";
+            String userPassword = "";
+
+            for (LoginCredentialsModel user : users) {
+                userEmail = user.getEmail();
+                userPassword = user.getPassword();
+            }
+
+            if(!userEmail.isEmpty() && !userPassword.isEmpty()){
+                email.setText(userEmail);
+                password.setText(userPassword);
+            }
+        }
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         emailStr = sharedpreferences.getString("email_key", null);
@@ -91,60 +121,27 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginCredentialsModel loginCredentials = new LoginCredentialsModel(email.getText().toString(),password.getText().toString());
 
-                //Api Caller
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.1.6:45455/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                // below line is to get data from all edit text fields.
+                String emailStrAfterClickingLogin = email.getText().toString();
+                String passwordStrAfterClickingLogin = password.getText().toString();
 
-                UserAPI api = retrofit.create(UserAPI.class);
-                Call<UserModel> call = api.authenticateUser(loginCredentials);
-
-                //Invoking th API
-                call.enqueue(new Callback<UserModel>() {
-                    @Override
-                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                        if(response.code() == 200){
-                            Log.d("response","working");
-
-                            if(response.body().getUsertype().equals("Owner")){
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                                editor.putString(EMAIL_KEY, response.body().getEmail());
-                                editor.putString(NAME_KEY, response.body().getName());
-                                editor.putString(USER_ID, response.body().getId());
-                                editor.putString(USER_TYPE, response.body().getUsertype());
-
-                                // to save our data with key and value.
-                                boolean result = editor.commit();
-
-                                // starting new activity.
-                                if(result){
-                                    Intent i = new Intent(Login.this, HomeScreenOwner.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            }else if(response.body().getUsertype().equals("Consumer")){
-                                Intent i = new Intent(Login.this, HomeScreenConsumer.class);
-                                startActivity(i);
-                                finish();
-                            }
-                        }else{
-                            Toast.makeText(Login.this,"User Not Available",Toast.LENGTH_LONG);
-                            /*Intent i = new Intent(SignUpOwner.this, Login.class);
-                            startActivity(i);
-                            finish();*/
-
-                        }
+                // validating if the text fields are empty or not.
+                if (emailStrAfterClickingLogin.isEmpty() && passwordStrAfterClickingLogin.isEmpty()) {
+                    Toast.makeText(Login.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    if(!startingEmailValue.isEmpty()){
+                        authenticatingUserFromBackend(emailStrAfterClickingLogin,passwordStrAfterClickingLogin);
                     }
 
-                    @Override
-                    public void onFailure(Call<UserModel> call, Throwable t) {
-                        Log.d("API failed : ",t.getMessage().toString());
-                    }
-                });
+                    // on below line we are calling a method to add new
+                    // course to sqlite data and pass all our values to it.
+                    db.addUser(emailStrAfterClickingLogin,passwordStrAfterClickingLogin);
+
+                    authenticatingUserFromBackend(emailStrAfterClickingLogin,passwordStrAfterClickingLogin);
+                }
+
             }
         });
 
@@ -164,5 +161,62 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         }
+    }
+
+    public void authenticatingUserFromBackend(String email,String password){
+        LoginCredentialsModel loginCredentials = new LoginCredentialsModel(email,password);
+
+        //Api Caller
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.6:45455/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        UserAPI api = retrofit.create(UserAPI.class);
+        Call<UserModel> call = api.authenticateUser(loginCredentials);
+
+        //Invoking th API
+        call.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.code() == 200){
+                    Log.d("response","working");
+
+                    if(response.body().getUsertype().equals("Owner")){
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                        editor.putString(EMAIL_KEY, response.body().getEmail());
+                        editor.putString(NAME_KEY, response.body().getName());
+                        editor.putString(USER_ID, response.body().getId());
+                        editor.putString(USER_TYPE, response.body().getUsertype());
+
+                        // to save our data with key and value.
+                        boolean result = editor.commit();
+
+                        // starting new activity.
+                        if(result){
+                            Intent i = new Intent(Login.this, HomeScreenOwner.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    }else if(response.body().getUsertype().equals("Consumer")){
+                        Intent i = new Intent(Login.this, HomeScreenConsumer.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }else{
+                    Toast.makeText(Login.this,"User Not Available",Toast.LENGTH_LONG);
+                            /*Intent i = new Intent(SignUpOwner.this, Login.class);
+                            startActivity(i);
+                            finish();*/
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Log.d("API failed : ",t.getMessage().toString());
+            }
+        });
     }
 }
