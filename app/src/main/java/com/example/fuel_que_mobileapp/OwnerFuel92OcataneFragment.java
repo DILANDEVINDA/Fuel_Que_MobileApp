@@ -21,11 +21,24 @@ public class OwnerFuel92OcataneFragment extends Fragment {
     private EditText fuelFinihingtimePopUP,fueslArrivalTimePopUP,fuelArrivalDatePopUP,carryinhLitresPopUP;
     private Button cancel,update,save;
     private ProgressBar progressBar;
+    private String carryingFuel,fuelFinishTime,fuelArrivalDate,fuelArrivalTime;
+    private int remainingFuel;
+
+    public OwnerFuel92OcataneFragment(){
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(getArguments() != null) {
+            fuelFinishTime = getArguments().getString("FuelFinishTime");
+            fuelArrivalDate = getArguments().getString("FuelArrivalDate");
+            remainingFuel = getArguments().getInt("RemainingFuel");
+            carryingFuel = getArguments().getString("CarryingFuel");
+            fuelArrivalTime = getArguments().getString("FuelArrivalTime");
+        }
     }
 
     @Override
@@ -35,26 +48,24 @@ public class OwnerFuel92OcataneFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_owner_fuel92_ocatane, container, false);
         update = (Button)rootView.findViewById(R.id.btnFragment92OcataneUpdate);
 
-        TextView fuelFinishTime = rootView.findViewById(R.id.textVie18);
-        TextView fuelArrivalDate = rootView.findViewById(R.id.textVie22);
-        TextView CarryingAmount = rootView.findViewById(R.id.textVie24);
-        TextView fuelArrivalTime = rootView.findViewById(R.id.textVie20);
-        TextView progresstxtView = rootView.findViewById(R.id.progressBar_textView92);
+        TextView txtfuelFinishTime = rootView.findViewById(R.id.textVie18);
+        TextView txtfuelArrivalDate = rootView.findViewById(R.id.textVie22);
+        TextView txtCarryingAmount = rootView.findViewById(R.id.textVie24);
+        TextView txtfuelArrivalTime = rootView.findViewById(R.id.textVie20);
+        TextView txtprogresstxtView = rootView.findViewById(R.id.progressBar_textView92);
         progressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar92);
 
-        Bundle bundle = getArguments();
-        String message1 = bundle.getString("FuelFinishTime");
-        String message2 = bundle.getString("FuelArrivalDate");
-        int message3 = bundle.getInt("RemainingFuel");
-        String message4 = bundle.getString("FuelArrivalTime");
+        txtfuelFinishTime.setText(fuelArrivalTime);
+        txtfuelArrivalDate.setText(fuelArrivalDate);
+        txtCarryingAmount.setText(carryingFuel);
+        txtfuelArrivalTime.setText(fuelFinishTime);
 
-        fuelFinishTime.setText(message1);
-        fuelArrivalDate.setText(message2);
-        CarryingAmount.setText(message3);
-        fuelArrivalTime.setText(message4);
+        double remainingfuelConvert = (remainingFuel/10000.00) * 100.00;
+        Log.d("converted value ", String.valueOf(remainingfuelConvert));
+        Log.d("remainigFuel value ", String.valueOf(remainingFuel/10000));
 
-        progressBar.setProgress(message3/10000 * 100);
-        progresstxtView.setText(String.valueOf(message3));
+        progressBar.setProgress((int)remainingfuelConvert);
+        txtprogresstxtView.setText(String.valueOf(remainingfuelConvert)+"%");
 
          update.setOnClickListener(new View.OnClickListener() {
             @Override

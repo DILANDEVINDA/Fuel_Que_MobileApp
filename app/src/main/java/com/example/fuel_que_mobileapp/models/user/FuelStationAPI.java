@@ -6,6 +6,6 @@ import retrofit2.http.Path;
 
 public interface FuelStationAPI {
 
-    @GET("backend/FuelStation/{fuelStationId}")
-    Call<FuelStationModel> getSpecificFuelStation(@Path("fuelStationId") String fuelStationId);
+    @GET("backend/FuelStation/{id}")
+    Call<FuelStationModel> getSpecificFuelStation(@Path("id") String id);
 }
