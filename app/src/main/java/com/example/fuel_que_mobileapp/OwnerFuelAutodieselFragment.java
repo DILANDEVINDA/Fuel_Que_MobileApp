@@ -14,6 +14,15 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.fuel_que_mobileapp.models.user.FuelStationAPI;
+import com.example.fuel_que_mobileapp.models.user.FuelTypeModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class OwnerFuelAutodieselFragment extends Fragment {
 
     private AlertDialog.Builder dialogbuilder;
@@ -21,7 +30,7 @@ public class OwnerFuelAutodieselFragment extends Fragment {
     private EditText fuelFinihingtimePopUP,fueslArrivalTimePopUP,fuelArrivalDatePopUP,carryinhLitresPopUP;
     private Button cancel,update,save;
     private ProgressBar progressBar;
-    private String carryingFuel,fuelFinishTime,fuelArrivalDate,fuelArrivalTime;
+    private String carryingFuel,fuelFinishTime,fuelArrivalDate,fuelArrivalTime,userID;
     private int remainingFuel;
 
     public OwnerFuelAutodieselFragment() {
@@ -37,6 +46,7 @@ public class OwnerFuelAutodieselFragment extends Fragment {
             remainingFuel = getArguments().getInt("RemainingFuel");
             carryingFuel = getArguments().getString("CarryingFuel");
             fuelArrivalTime = getArguments().getString("FuelArrivalTime");
+            userID = getArguments().getString("UserId");
         }
     }
 
@@ -94,6 +104,46 @@ public class OwnerFuelAutodieselFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
+                    }
+                });
+
+                save.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        //updating using api
+
+                        FuelTypeModel updateInfo = new FuelTypeModel("AutoDiesel",userID,fuelArrivalDatePopUP.getText().toString(),fuelFinihingtimePopUP.getText().toString(),fueslArrivalTimePopUP.getText().toString(),Integer.parseInt(carryinhLitresPopUP.getText().toString()));
+
+                        //Api Caller
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://192.168.1.6:45455/")
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        FuelStationAPI api = retrofit.create(FuelStationAPI.class);
+                        Call<Void> call = api.updateSpecificFuelStation(userID,updateInfo);
+
+                        //Invoking th API
+                        call.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.code() == 200){
+                                    txtfuelFinishTime.setText(fuelFinihingtimePopUP.getText().toString());
+                                    txtfuelArrivalDate.setText(fuelArrivalDatePopUP.getText().toString());
+                                    txtCarryingAmount.setText(fueslArrivalTimePopUP.getText().toString());
+                                    txtfuelArrivalTime.setText(carryinhLitresPopUP.getText().toString());
+
+                                    dialog.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                        //end of api calling
                     }
                 });
             }

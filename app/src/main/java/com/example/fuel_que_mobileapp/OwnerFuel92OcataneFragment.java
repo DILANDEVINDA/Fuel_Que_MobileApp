@@ -120,7 +120,7 @@ public class OwnerFuel92OcataneFragment extends Fragment {
 
                         //updating using api
 
-                        FuelTypeModel updateInfo = new FuelTypeModel("Fuel92",userID,fuelArrivalDatePopUP.getText().toString(),fuelFinihingtimePopUP.getText().toString(),fueslArrivalTimePopUP.getText().toString(),Integer.getInteger(carryinhLitresPopUP.getText().toString()));
+                        FuelTypeModel updateInfo = new FuelTypeModel("Fuel92",userID,fuelArrivalDatePopUP.getText().toString(),fuelFinihingtimePopUP.getText().toString(),fueslArrivalTimePopUP.getText().toString(),Integer.parseInt(carryinhLitresPopUP.getText().toString()));
 
                         //Api Caller
                         Retrofit retrofit = new Retrofit.Builder()

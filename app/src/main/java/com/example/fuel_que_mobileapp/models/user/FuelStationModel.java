@@ -1,30 +1,30 @@
 package com.example.fuel_que_mobileapp.models.user;
 
 public class FuelStationModel {
-    public String id;
-    public String ownerId;
-    public String name;
-    public String location;
-    public int fuelNinetytwo;
-    public int fuelNinetytwoCarryingAmount;
-    public String fuelNinetytwoArrivalTime;
-    public String fuelNinetytwoArrivalDate;
-    public String fuelNinetytwoFinishing;
-    public int fuelNinetyFive;
-    public int fuelNinetyFiveCarryingAmount;
-    public String fuelNinetyFiveArrivalTime;
-    public String fuelNinetyFiveArrivalDate;
-    public String fuelNinetyFiveFinishing;
-    public int autoDiesel;
-    public int autoDieselCarryingAmount;
-    public String autoDieselArrivalTime;
-    public String autoDieselArrivalDate;
-    public String autoDieselFinishing;
-    public int superDiesel;
-    public int superDieselCarryingAmount;
-    public String superDieselArrivalTime;
-    public String superDieselArrivalDate;
-    public String superDieselFinishing;
+    private String id;
+    private String ownerId;
+    private String name;
+    private String location;
+    private int fuelNinetytwo;
+    private int fuelNinetytwoCarryingAmount;
+    private String fuelNinetytwoArrivalTime;
+    private String fuelNinetytwoArrivalDate;
+    private String fuelNinetytwoFinishing;
+    private int fuelNinetyFive;
+    private int fuelNinetyFiveCarryingAmount;
+    private String fuelNinetyFiveArrivalTime;
+    private String fuelNinetyFiveArrivalDate;
+    private String fuelNinetyFiveFinishing;
+    private int autoDiesel;
+    private int autoDieselCarryingAmount;
+    private String autoDieselArrivalTime;
+    private String autoDieselArrivalDate;
+    private String autoDieselFinishing;
+    private int superDiesel;
+    private int superDieselCarryingAmount;
+    private String superDieselArrivalTime;
+    private String superDieselArrivalDate;
+    private String superDieselFinishing;
 
     public FuelStationModel(String ownerId, String name, String location, int fuelNinetytwo, int fuelNinetyFive, int autoDiesel, int superDiesel) {
         this.ownerId = ownerId;
