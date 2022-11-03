@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:node="merge">
         <activity
+            android:name=".SpecificStationConsumerTwo"
+            android:exported="false" />
+        <activity
+            android:name=".SpecificStationConsumer"
+            android:exported="false" />
+        <activity
             android:name=".HomeScreenConsumer"
             android:exported="true">
 
@@ -25,9 +31,7 @@
             android:exported="true" />
         <activity
             android:name=".HomeScreenOwner"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".SignUpConsumer"
             android:exported="true" />
