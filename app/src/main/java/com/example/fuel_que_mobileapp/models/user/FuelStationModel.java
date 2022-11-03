@@ -6,49 +6,77 @@ public class FuelStationModel {
     public String name;
     public String location;
     public int fuelNinetytwo;
-    public String fuelNinetytwoArrival;
+    public int fuelNinetytwoCarryingAmount;
+    public String fuelNinetytwoArrivalTime;
+    public String fuelNinetytwoArrivalDate;
     public String fuelNinetytwoFinishing;
     public int fuelNinetyFive;
-    public String fuelNinetyFiveArrival;
+    public int fuelNinetyFiveCarryingAmount;
+    public String fuelNinetyFiveArrivalTime;
+    public String fuelNinetyFiveArrivalDate;
     public String fuelNinetyFiveFinishing;
     public int autoDiesel;
-    public String autoDieselArrival;
+    public int autoDieselCarryingAmount;
+    public String autoDieselArrivalTime;
+    public String autoDieselArrivalDate;
     public String autoDieselFinishing;
     public int superDiesel;
-    public String superDieselArrival;
-    public String superDieselFinising;
+    public int superDieselCarryingAmount;
+    public String superDieselArrivalTime;
+    public String superDieselArrivalDate;
+    public String superDieselFinishing;
 
-    public FuelStationModel(
-    String OwnerId,
-    String Name,String Location,
-    int fuelNinetyTwo,
-    String fuelNinetyTwoArrival,
-    String fuelNinetytwoFinishing,
-    int fuelNinetyFive,
-    String fuelNinetyFiveArrival,
-    String fuelNinetyFiveFinishing,
-    int autoDiesel,
-    String fuelAutoDieselArrival,
-    String fuelAutoDieselFinishing,
-    int superDiesel,
-    String fuelSuperDieselArrival,
-    String fuelSuperDieselFinishing)
-    {
-        this.ownerId = OwnerId;
-        this.name = Name;
-        this.location = Location;
-        this.fuelNinetytwo = fuelNinetyTwo;
-        this.fuelNinetytwoArrival = fuelNinetyTwoArrival;
+    public FuelStationModel(String ownerId, String name, String location, int fuelNinetytwo, int fuelNinetyFive, int autoDiesel, int superDiesel) {
+        this.ownerId = ownerId;
+        this.name = name;
+        this.location = location;
+        this.fuelNinetytwo = fuelNinetytwo;
+        this.fuelNinetytwoCarryingAmount = 0;
+        this.fuelNinetytwoArrivalTime = "-";
+        this.fuelNinetytwoArrivalDate = "-";
+        this.fuelNinetytwoFinishing = "-";
+        this.fuelNinetyFive = fuelNinetyFive;
+        this.fuelNinetyFiveCarryingAmount = 0;
+        this.fuelNinetyFiveArrivalTime = "-";
+        this.fuelNinetyFiveArrivalDate = "-";
+        this.fuelNinetyFiveFinishing = "-";
+        this.autoDiesel = autoDiesel;
+        this.autoDieselCarryingAmount = 0;
+        this.autoDieselArrivalTime = "-";
+        this.autoDieselArrivalDate = "-";
+        this.autoDieselFinishing = "-";
+        this.superDiesel = superDiesel;
+        this.superDieselCarryingAmount = 0;
+        this.superDieselArrivalTime = "-";
+        this.superDieselArrivalDate = "-";
+        this.superDieselFinishing = "-";
+    }
+
+    public FuelStationModel(String id, String ownerId, String name, String location, int fuelNinetytwo, int fuelNinetytwoCarryingAmount, String fuelNinetytwoArrivalTime, String fuelNinetytwoArrivalDate, String fuelNinetytwoFinishing, int fuelNinetyFive, int fuelNinetyFiveCarryingAmount, String fuelNinetyFiveArrivalTime, String fuelNinetyFiveArrivalDate, String fuelNinetyFiveFinishing, int autoDiesel, int autoDieselCarryingAmount, String autoDieselArrivalTime, String autoDieselArrivalDate, String autoDieselFinishing, int superDiesel, int superDieselCarryingAmount, String superDieselArrivalTime, String superDieselArrivalDate, String superDieselFinishing) {
+        this.id = id;
+        this.ownerId = ownerId;
+        this.name = name;
+        this.location = location;
+        this.fuelNinetytwo = fuelNinetytwo;
+        this.fuelNinetytwoCarryingAmount = fuelNinetytwoCarryingAmount;
+        this.fuelNinetytwoArrivalTime = fuelNinetytwoArrivalTime;
+        this.fuelNinetytwoArrivalDate = fuelNinetytwoArrivalDate;
         this.fuelNinetytwoFinishing = fuelNinetytwoFinishing;
         this.fuelNinetyFive = fuelNinetyFive;
-        this.fuelNinetyFiveArrival = fuelNinetyFiveArrival;
+        this.fuelNinetyFiveCarryingAmount = fuelNinetyFiveCarryingAmount;
+        this.fuelNinetyFiveArrivalTime = fuelNinetyFiveArrivalTime;
+        this.fuelNinetyFiveArrivalDate = fuelNinetyFiveArrivalDate;
         this.fuelNinetyFiveFinishing = fuelNinetyFiveFinishing;
         this.autoDiesel = autoDiesel;
-        this.autoDieselArrival = fuelAutoDieselArrival;
-        this.autoDieselFinishing = fuelAutoDieselFinishing;
+        this.autoDieselCarryingAmount = autoDieselCarryingAmount;
+        this.autoDieselArrivalTime = autoDieselArrivalTime;
+        this.autoDieselArrivalDate = autoDieselArrivalDate;
+        this.autoDieselFinishing = autoDieselFinishing;
         this.superDiesel = superDiesel;
-        this.superDieselArrival = fuelSuperDieselArrival;
-        this.superDieselFinising = fuelSuperDieselFinishing;
+        this.superDieselCarryingAmount = superDieselCarryingAmount;
+        this.superDieselArrivalTime = superDieselArrivalTime;
+        this.superDieselArrivalDate = superDieselArrivalDate;
+        this.superDieselFinishing = superDieselFinishing;
     }
 
     public String getId() {
@@ -71,8 +99,16 @@ public class FuelStationModel {
         return fuelNinetytwo;
     }
 
-    public String getFuelNinetytwoArrival() {
-        return fuelNinetytwoArrival;
+    public int getFuelNinetytwoCarryingAmount() {
+        return fuelNinetytwoCarryingAmount;
+    }
+
+    public String getFuelNinetytwoArrivalTime() {
+        return fuelNinetytwoArrivalTime;
+    }
+
+    public String getFuelNinetytwoArrivalDate() {
+        return fuelNinetytwoArrivalDate;
     }
 
     public String getFuelNinetytwoFinishing() {
@@ -83,8 +119,16 @@ public class FuelStationModel {
         return fuelNinetyFive;
     }
 
-    public String getFuelNinetyFiveArrival() {
-        return fuelNinetyFiveArrival;
+    public int getFuelNinetyFiveCarryingAmount() {
+        return fuelNinetyFiveCarryingAmount;
+    }
+
+    public String getFuelNinetyFiveArrivalTime() {
+        return fuelNinetyFiveArrivalTime;
+    }
+
+    public String getFuelNinetyFiveArrivalDate() {
+        return fuelNinetyFiveArrivalDate;
     }
 
     public String getFuelNinetyFiveFinishing() {
@@ -95,8 +139,16 @@ public class FuelStationModel {
         return autoDiesel;
     }
 
-    public String getAutoDieselArrival() {
-        return autoDieselArrival;
+    public int getAutoDieselCarryingAmount() {
+        return autoDieselCarryingAmount;
+    }
+
+    public String getAutoDieselArrivalTime() {
+        return autoDieselArrivalTime;
+    }
+
+    public String getAutoDieselArrivalDate() {
+        return autoDieselArrivalDate;
     }
 
     public String getAutoDieselFinishing() {
@@ -107,11 +159,19 @@ public class FuelStationModel {
         return superDiesel;
     }
 
-    public String getSuperDieselArrival() {
-        return superDieselArrival;
+    public int getSuperDieselCarryingAmount() {
+        return superDieselCarryingAmount;
     }
 
-    public String getSuperDieselFinising() {
-        return superDieselFinising;
+    public String getSuperDieselArrivalTime() {
+        return superDieselArrivalTime;
+    }
+
+    public String getSuperDieselArrivalDate() {
+        return superDieselArrivalDate;
+    }
+
+    public String getSuperDieselFinishing() {
+        return superDieselFinishing;
     }
 }

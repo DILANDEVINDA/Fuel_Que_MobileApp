@@ -100,10 +100,10 @@ public class HomeScreenOwner extends AppCompatActivity {
                 final OwnerFuel92OcataneFragment ocatane92Fragment = new OwnerFuel92OcataneFragment();
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getFuelNinetytwo());
-                b.putString("CarryingFuel", "6000");
+                b.putString("CarryingFuel", String.valueOf(fuelStationDetails.getFuelNinetytwoCarryingAmount()));
                 b.putString("FuelFinishTime", fuelStationDetails.getFuelNinetytwoFinishing());
-                b.putString("FuelArrivalDate", "2022/10/14");
-                b.putString("FuelArrivalTime", fuelStationDetails.getFuelNinetytwoArrival());
+                b.putString("FuelArrivalDate", fuelStationDetails.getFuelNinetytwoArrivalDate());
+                b.putString("FuelArrivalTime", fuelStationDetails.getFuelNinetytwoArrivalTime());
                 b.putString("UserId",userId);
 
                 ocatane92Fragment.setArguments(b);
@@ -122,10 +122,10 @@ public class HomeScreenOwner extends AppCompatActivity {
                 final OwnerFuel95OcataneFragment octane95Fragment = new OwnerFuel95OcataneFragment();
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getFuelNinetyFive());
-                b.putString("CarryingFuel", "13000");
+                b.putString("CarryingFuel", String.valueOf(fuelStationDetails.getFuelNinetyFiveCarryingAmount()));
                 b.putString("FuelFinishTime", fuelStationDetails.getFuelNinetyFiveFinishing());
-                b.putString("FuelArrivalDate", "2022/10/15");
-                b.putString("FuelArrivalTime",fuelStationDetails.getFuelNinetyFiveArrival());
+                b.putString("FuelArrivalDate", fuelStationDetails.getFuelNinetyFiveArrivalDate());
+                b.putString("FuelArrivalTime",fuelStationDetails.getFuelNinetyFiveArrivalTime());
 
                 octane95Fragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -144,10 +144,10 @@ public class HomeScreenOwner extends AppCompatActivity {
                 final OwnerFuelAutodieselFragment autodieselFragment = new OwnerFuelAutodieselFragment();
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getAutoDiesel());
-                b.putString("CarryingFuel", "8000");
+                b.putString("CarryingFuel", String.valueOf(fuelStationDetails.getAutoDieselCarryingAmount()));
                 b.putString("FuelFinishTime",fuelStationDetails.getAutoDieselFinishing());
-                b.putString("FuelArrivalDate", "2022/10/16");
-                b.putString("FuelArrivalTime", fuelStationDetails.getAutoDieselArrival());
+                b.putString("FuelArrivalDate", fuelStationDetails.getAutoDieselArrivalDate());
+                b.putString("FuelArrivalTime", fuelStationDetails.getAutoDieselArrivalTime());
 
                 autodieselFragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -166,10 +166,10 @@ public class HomeScreenOwner extends AppCompatActivity {
                 final  OwnerFuelSuperDieselFragment superDieselFragment = new OwnerFuelSuperDieselFragment();
                 Bundle b = new Bundle();
                 b.putInt("RemainingFuel", fuelStationDetails.getSuperDiesel());
-                b.putString("CarryingFuel", "10000");
-                b.putString("FuelFinishTime", fuelStationDetails.getSuperDieselFinising());
-                b.putString("FuelArrivalDate", "2022/10/10");
-                b.putString("FuelArrivalTime", fuelStationDetails.getSuperDieselArrival());
+                b.putString("CarryingFuel", String.valueOf(fuelStationDetails.getSuperDieselCarryingAmount()));
+                b.putString("FuelFinishTime", fuelStationDetails.getSuperDieselFinishing());
+                b.putString("FuelArrivalDate", fuelStationDetails.getSuperDieselArrivalDate());
+                b.putString("FuelArrivalTime", fuelStationDetails.getSuperDieselArrivalTime());
 
                 superDieselFragment.setArguments(b);
                 fragmentTransaction.setReorderingAllowed(true);
@@ -199,21 +199,30 @@ public class HomeScreenOwner extends AppCompatActivity {
                     Log.d("response of fuelStation",response.body().getId());
 
                     fuelStationDetails = new FuelStationModel(
+                        response.body().getId(),
                         response.body().getOwnerId(),
                         response.body().getName(),
                         response.body().getLocation(),
                         response.body().getFuelNinetytwo(),
-                        response.body().getFuelNinetytwoArrival(),
+                        response.body().getFuelNinetytwoCarryingAmount(),
+                        response.body().getFuelNinetytwoArrivalTime(),
+                        response.body().getFuelNinetytwoArrivalDate(),
                         response.body().getFuelNinetytwoFinishing(),
                         response.body().getFuelNinetyFive(),
-                        response.body().getFuelNinetyFiveArrival(),
+                        response.body().getFuelNinetyFiveCarryingAmount(),
+                        response.body().getFuelNinetyFiveArrivalTime(),
+                        response.body().getFuelNinetyFiveArrivalDate(),
                         response.body().getFuelNinetyFiveFinishing(),
                         response.body().getAutoDiesel(),
-                        response.body().getAutoDieselArrival(),
+                        response.body().getAutoDieselCarryingAmount(),
+                        response.body().getAutoDieselArrivalTime(),
+                        response.body().getAutoDieselArrivalDate(),
                         response.body().getAutoDieselFinishing(),
                         response.body().getSuperDiesel(),
-                        response.body().getSuperDieselArrival(),
-                        response.body().getSuperDieselFinising()
+                        response.body().getSuperDieselCarryingAmount(),
+                        response.body().getSuperDieselArrivalTime(),
+                        response.body().getSuperDieselArrivalDate(),
+                        response.body().getSuperDieselFinishing()
                     );
                 }
 
